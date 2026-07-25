@@ -429,8 +429,9 @@ Form $sum_(k=0)^oo c_k (x-a)^k = c_0+c_(1)(x-a)+c_(2)(x-a)^2+dots$ (Entwicklungs
   $
     R = cases(+oo & "falls " rho=0, 1\/rho & "falls " rho>0, 0 & "falls " rho=oo) quad rho=limsup_(k->oo) root(k, |c_k|)
   $
+  *Alternativ (Quotienten, oft einfacher bei Fakultäten):*
+  $ R = lim_(n->oo) abs(c_n)/abs(c_(n+1)) $
 ]
-Alternativ: $R=lim_(n->oo) |c_n|/|c_(n+1)|$.
 
 #K $sum c_k (x-a)^k$ konvergiert absolut für $|x-a|<R$, divergiert für $|x-a|>R$.
 
@@ -486,6 +487,8 @@ Alternativ (Folgenstetigkeit): $forall (a_n)->x_0$ gilt $f(lim a_n)=f(x_0)=lim f
 *Gleichmässige Stetigkeit:* $forall epsilon>0 med exists delta>0 med forall x,y in D: |x-y|<delta => |f(x)-f(y)|<epsilon$.
 
 Auf kompaktem Intervall stetig $=>$ dort gleichmässig stetig.
+
+*Lipschitz-stetig:* $exists L>=0 med forall x,y in D: |f(x)-f(y)|<=L|x-y|$. (Lipschitz $=>$ gleichmässig stetig.)
 
 #sub[Rechnen mit Stetigkeit]
 $f,g$ in $x_0$ stetig, $lambda in RR$:
@@ -1219,8 +1222,6 @@ Dann Koeffizienten $C_i$ finden: $y_p$ ableiten, in DG einsetzen, Koeffizientenv
 #bx[
   #S Ist $f$ stetig & Lipschitz-stetig in der 2. Variablen ($exists L>0: |f(x,y_1)-f(x,y_2)|<=L|y_1-y_2|$), so hat das AWP $cases(u'=f(x,u), u(x_0)=y_0)$ eine eindeutige $C^1$-Lösung.
 ]
-
-*Lipschitz-stetig:* $exists L>=0 med forall x,y in D: |f(x)-f(y)|<=L|x-y|$. (Lipschitz $=>$ gleichmässig stetig.)
 
 #strat[Strategie – DGL 1. Ordnung]
 Form erkennen $->$ passende Methode:
