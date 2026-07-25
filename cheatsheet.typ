@@ -365,14 +365,12 @@ Bsp. $d_1=3, d_(n+1)=sqrt(3d_n-2)$. Induktion: monoton fallend. Grenzwert-Kandid
 - Divergenten Minoranten suchen.
 - Alternierend: zeige $lim a_(p_(1)(n)) eq.not lim a_(p_(2)(n))$.
 
-#sub[Limes Binom Trick]
+#strat[Strategie – Spezielle Limes-Tricks]
+*Binom Trick* (Differenzen mit Wurzeln konjugiert erweitern):
 $ lim_(x->oo)(sqrt(x+5)-sqrt(x-3)) = lim_(x->oo) ((x+5)-(x-3))/(sqrt(x+5)+sqrt(x-3)) $
-
-#sub[Limes Substitution Trick]
+*Substitution Trick* (z.B. $u=1/x$):
 $ lim_(x->oo) x^2(1-cos(1/x)), \ u=1/x: quad lim_(u->0) (1-cos u)/u^2 = lim (sin u)/(2u)=lim (cos u)/2 = 1/2 $
-
-#sub[Limes Log Trick]
-Formen $1^oo, oo^0$: $f(x)^(g(x))=e^(g(x) dot ln f(x))$, dann Exponent betrachten (Bernoulli / vereinfachen).
+*Log Trick* – Formen $1^oo, oo^0$: $f(x)^(g(x))=e^(g(x) dot ln f(x))$, dann Exponent betrachten (Bernoulli / vereinfachen).
 $ lim u(x)^(v(x)) = e^(lim[v(x) ln u(x)]) $
 
 #sub[Rechnen mit Reihen]
