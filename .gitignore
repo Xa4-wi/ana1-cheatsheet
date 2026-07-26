@@ -1,0 +1,5 @@
+# Compiled PDF is built by the GitHub Actions workflow and published as a release
+cheatsheet.pdf
+
+# macOS
+.DS_Store

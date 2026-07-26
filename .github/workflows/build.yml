@@ -1,0 +1,42 @@
+name: Build & Release Cheatsheet
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "cheatsheet.typ"
+      - "**.png"
+      - ".github/workflows/build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-latest
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Compile PDF
+        run: typst compile cheatsheet.typ cheatsheet.pdf
+
+      - name: Update "latest" release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest build
+          body: |
+            Automatisch kompilierte, aktuellste Version des Cheatsheets.
+            Kompiliert aus Commit ${{ github.sha }}.
+          files: cheatsheet.pdf
+          prerelease: false
+          make_latest: true

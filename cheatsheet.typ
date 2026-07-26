@@ -1027,6 +1027,9 @@ $forall x in (0,pi): sin x>0$; $e^(i pi/2)=i$.
 
 #sub[Potenz der Winkelfunktion]
 $ sin^2 x=1/2(1-cos 2x), quad cos^2 x=1/2(1+cos 2x) $
+$ sin^3 x=sin x(1-cos^2 x), quad cos^3 x=cos x(1-sin^2 x) $
+$ sin^4 x=3/8-1/2 cos 2x+1/8 cos 4x $
+$ cos^4 x=3/8+1/2 cos 2x+1/8 cos 4x $
 
 #sub[Reduktionsformel]
 $ integral cos^n x dif x = (n-1)/n integral cos^(n-2)x dif x + (cos^(n-1)x sin x)/n $
