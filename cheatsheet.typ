@@ -1359,6 +1359,19 @@ $ P(x)=x^3-x^2+x-1=(x-1)(x^2+1)=(x-1)(x-i)(x+i). $
   $ L=lim b_(n+1)=lim a/(n+1) b_n=0. $
 ]
 
+#block(width: 100%, breakable: false)[
+  #sub[Cauchy-Folge]
+  *Aufgabe:* Sei $(s_n)_(n>=0)$ eine Cauchy-Folge, $k>0$ und
+  $ |t_n-t_m|<=k|s_n-s_m| quad forall n,m>=1. $
+  Zeige, dass $(t_n)_(n>=0)$ ebenfalls eine Cauchy-Folge ist.
+
+  Sei $epsilon>0$. Da $(s_n)$ Cauchy ist, gibt es ein $N$ mit
+  $ |s_n-s_m|<epsilon/k quad forall n,m>=N. $
+  Dann gilt
+  $ |t_n-t_m|<=k|s_n-s_m|<k dot epsilon/k=epsilon. $
+  Also ist $(t_n)$ eine Cauchy-Folge.
+]
+
 #chapter[Algebraic Tricks]
 
 #sub[Polynome und Brüche]
@@ -1368,6 +1381,11 @@ $ P(x)=x^3-x^2+x-1=(x-1)(x^2+1)=(x-1)(x-i)(x+i). $
 - *Quadratisch ergänzen:* $x^2+b x+c=(x+b/2)^2+c-b^2/4$.
 - *Substitution:* nur $x^2,x^4,dots$ vorhanden $=> u=x^2$; wiederholten Ausdruck $g(x)$ durch $u$ ersetzen.
 - *Brüche:* $A/B plus.minus C/D=(A D plus.minus B C)/(B D)$; vor dem Kürzen faktorisieren.
+#block(width: 100%, breakable: false)[
+  - *Partialbruch bei konstantem Abstand:* Ist $B-A=c != 0$, dann
+    $ 1/(A B)=1/c dot (1/A-1/B). $
+    Beispiel: $1/((3v-2)(3v+1))=1/3 dot (1/(3v-2)-1/(3v+1))$.
+]
 - Falls $deg P>=deg Q$: $P/Q=S+R/Q$ mit $deg R<deg Q$ (Polynomdivision).
 - Bei $x->oo$: Zähler und Nenner durch die höchste vorkommende Potenz von $x$ teilen.
 
