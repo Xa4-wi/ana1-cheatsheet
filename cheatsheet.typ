@@ -413,6 +413,7 @@ Falls $a_n>=0$ und $sum a_n$ divergent: $sum a_n=oo$.
 #S *(Dirichlet)* Konvergiert eine Reihe absolut, so konvergiert jede Umordnung mit demselben Grenzwert ($sigma: NN^* -> NN^*$ bijektiv).
 
 #S *(Riemann)* Konvergiert die Reihe bedingt (d.h. konvergent, aber nicht absolut), so gibt es zu jedem $x in RR$ eine Anordnung mit $sum a_(sigma(k))=x$.
+#B Bsp.: alternierende harmon. Reihe $sum (-1)^(k+1)/k$ lässt sich auf jeden Wert $x in RR$ umordnen.
 
 *Quotientenkriterium:* $a_n eq.not 0$, $limsup |a_(n+1)/a_n|<1 =>$ abs. konv.; $liminf|a_(n+1)/a_n|>1 =>$ div. Äquiv. mit $lim$.
 
@@ -800,7 +801,7 @@ $L(f)=sup_P L(f,P)$, $U(f)=inf_P U(f,P)$.
   Äquiv.: $forall epsilon>0 med exists P: U(f,P)-L(f,P)<epsilon$.
 ]
 
-#sub[Integrierbarkeit schnell zeigen]
+#strat[Strategie – Integrierbarkeit zeigen]
 + $f$ stetig auf $[a,b]$ $=> f$ integrierbar
 + $f$ monoton $=> f$ integrierbar
 + $f,g$ integrierbar $=> f+g, lambda f, f g, |f|, max, min$ und $f/g$ (falls $|g|>=beta>0$) integrierbar
