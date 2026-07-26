@@ -365,14 +365,12 @@ Bsp. $d_1=3, d_(n+1)=sqrt(3d_n-2)$. Induktion: monoton fallend. Grenzwert-Kandid
 - Divergenten Minoranten suchen.
 - Alternierend: zeige $lim a_(p_(1)(n)) eq.not lim a_(p_(2)(n))$.
 
-#sub[Limes Binom Trick]
+#strat[Strategie – Spezielle Limes-Tricks]
+*Binom Trick* (Differenzen mit Wurzeln konjugiert erweitern):
 $ lim_(x->oo)(sqrt(x+5)-sqrt(x-3)) = lim_(x->oo) ((x+5)-(x-3))/(sqrt(x+5)+sqrt(x-3)) $
-
-#sub[Limes Substitution Trick]
+*Substitution Trick* (z.B. $u=1/x$):
 $ lim_(x->oo) x^2(1-cos(1/x)), \ u=1/x: quad lim_(u->0) (1-cos u)/u^2 = lim (sin u)/(2u)=lim (cos u)/2 = 1/2 $
-
-#sub[Limes Log Trick]
-Formen $1^oo, oo^0$: $f(x)^(g(x))=e^(g(x) dot ln f(x))$, dann Exponent betrachten (Bernoulli / vereinfachen).
+*Log Trick* – Formen $1^oo, oo^0$: $f(x)^(g(x))=e^(g(x) dot ln f(x))$, dann Exponent betrachten (Bernoulli / vereinfachen).
 $ lim u(x)^(v(x)) = e^(lim[v(x) ln u(x)]) $
 
 #sub[Rechnen mit Reihen]
@@ -415,6 +413,7 @@ Falls $a_n>=0$ und $sum a_n$ divergent: $sum a_n=oo$.
 #S *(Dirichlet)* Konvergiert eine Reihe absolut, so konvergiert jede Umordnung mit demselben Grenzwert ($sigma: NN^* -> NN^*$ bijektiv).
 
 #S *(Riemann)* Konvergiert die Reihe bedingt (d.h. konvergent, aber nicht absolut), so gibt es zu jedem $x in RR$ eine Anordnung mit $sum a_(sigma(k))=x$.
+#B Bsp.: alternierende harmon. Reihe $sum (-1)^(k+1)/k$ lässt sich auf jeden Wert $x in RR$ umordnen.
 
 *Quotientenkriterium:* $a_n eq.not 0$, $limsup |a_(n+1)/a_n|<1 =>$ abs. konv.; $liminf|a_(n+1)/a_n|>1 =>$ div. Äquiv. mit $lim$.
 
@@ -431,8 +430,9 @@ Form $sum_(k=0)^oo c_k (x-a)^k = c_0+c_(1)(x-a)+c_(2)(x-a)^2+dots$ (Entwicklungs
   $
     R = cases(+oo & "falls " rho=0, 1\/rho & "falls " rho>0, 0 & "falls " rho=oo) quad rho=limsup_(k->oo) root(k, |c_k|)
   $
+  *Alternativ (Quotienten, oft einfacher bei Fakultäten):*
+  $ R = lim_(n->oo) abs(c_n)/abs(c_(n+1)) $
 ]
-Alternativ: $R=lim_(n->oo) |c_n|/|c_(n+1)|$.
 
 #K $sum c_k (x-a)^k$ konvergiert absolut für $|x-a|<R$, divergiert für $|x-a|>R$.
 
@@ -488,6 +488,8 @@ Alternativ (Folgenstetigkeit): $forall (a_n)->x_0$ gilt $f(lim a_n)=f(x_0)=lim f
 *Gleichmässige Stetigkeit:* $forall epsilon>0 med exists delta>0 med forall x,y in D: |x-y|<delta => |f(x)-f(y)|<epsilon$.
 
 Auf kompaktem Intervall stetig $=>$ dort gleichmässig stetig.
+
+*Lipschitz-stetig:* $exists L>=0 med forall x,y in D: |f(x)-f(y)|<=L|x-y|$. (Lipschitz $=>$ gleichmässig stetig.)
 
 #sub[Rechnen mit Stetigkeit]
 $f,g$ in $x_0$ stetig, $lambda in RR$:
@@ -799,7 +801,7 @@ $L(f)=sup_P L(f,P)$, $U(f)=inf_P U(f,P)$.
   Äquiv.: $forall epsilon>0 med exists P: U(f,P)-L(f,P)<epsilon$.
 ]
 
-#sub[Integrierbarkeit schnell zeigen]
+#strat[Strategie – Integrierbarkeit zeigen]
 + $f$ stetig auf $[a,b]$ $=> f$ integrierbar
 + $f$ monoton $=> f$ integrierbar
 + $f,g$ integrierbar $=> f+g, lambda f, f g, |f|, max, min$ und $f/g$ (falls $|g|>=beta>0$) integrierbar
@@ -891,20 +893,33 @@ $f: (a,b]->RR$ integrierbar, falls $lim_(epsilon->0^+) integral_(a+epsilon)^b f$
 
 Bsp. $f(t)=t^x$: auf $(0,1)$ integrierbar für $x>-1$: $integral_0^1 t^x dif t=1/(x+1)$; auf $[1,oo)$ für $x<-1$: $integral_1^oo t^x dif t = -1/(1+x)$.
 
-#sub[Stammfunktionen rationaler Funktionen]
-$R(x)=P(x)/Q(x)$. *Vorgehen:* Falls $deg P>=deg Q$: Polynomdivision, dann $Q$ über $RR$ faktorisieren und die Partialbrüche ansetzen.
+#sub[Partialbruchzerlegung]
+Ziel: $R(x)=P(x)/Q(x)$ als Summe einfach integrierbarer Brüche schreiben.
 
-*Ansatz pro Faktor von $Q$:*
-- Linearer Faktor $(x-alpha)^m$: $sum_(j=1)^m A_j/(x-alpha)^j$
-- Irreduzibles Quadrat $q(x)^m$: $sum_(j=1)^m (B_j x+C_j)/(q(x)^j)$
+#steps[
+  + Falls $deg P>=deg Q$: Polynomdivision.
+  + $Q$ über $RR$ faktorisieren (quadratisch irreduzibel $<==> p^2-4q<0$).
+  + *Ansatz* pro Faktor, mit Vielfachheit:
+    - $(x-alpha)^m: quad sum_(k=1)^m A_k/(x-alpha)^k$
+    - $(x^2+p x+q)^n: quad sum_(k=1)^n (B_k x+C_k)/((x^2+p x+q)^k)$
+  + Mit $Q$ multiplizieren, Koeffizienten vergleichen oder $x$-Werte einsetzen ($->$ Zuhaltemethode).
+  + Gliedweise integrieren.
+]
 
-*Koeffizienten bestimmen:* auf gemeinsamen Nenner bringen und Koeffizienten vergleichen; bei einfachen linearen Faktoren direkt $x=alpha$ einsetzen (Zuhaltemethode), bei mehrfachen Faktoren ggf. ableiten.
+*Zuhaltemethode* (nur für einfache Linearfaktoren $(x-alpha)$): Faktor $(x-alpha)$ im Nenner zuhalten (streichen) und $x=alpha$ in den Rest einsetzen:
+$ A = lr(P(x)/(Q(x)\/(x-alpha)) |)_(x=alpha) $
+Bsp. $1/(x(x+1))$: $quad A = lr(1/(x+1)|)_(x=0) = 1$, $quad B = lr(1/x|)_(x=-1) = -1$
+$ ==> 1/(x(x+1)) = 1/x - 1/(x+1) $
+#B *Warum:* Ansatz mit $(x-alpha)$ multiplizieren $->$ jeder andere Term behält einen Faktor $(x-alpha)$ und verschwindet bei $x=alpha$; nur $A$ bleibt stehen. Bei mehrfachen Faktoren $(x-alpha)^m$ liefert es nur $A_m$.
 
-*Integration.* Reeller linearer Faktor:
-$ integral 1/(x-gamma_i)^n = cases(ln(x-gamma_i) & n=1, (-1)/((n-1)(x-gamma_i)^(n-1)) & "sonst") $
-Komplexe: $(A+B x)/((x-alpha)^2+beta^2)^j = (B(x-alpha))/(...)^j + (A+B alpha)/(...)^j$; letzter Term via Sub. $(x-alpha)=beta t$.
+*Grundintegrale.*
+$ integral (dif x)/(x-a) = ln|x-a|, quad integral (dif x)/((x-a)^n) = (-1)/((n-1)(x-a)^(n-1)) $
+$ integral (2x+p)/(x^2+p x+q) dif x = ln|x^2+p x+q| $
+$ integral (dif x)/(x^2+p x+q) = 2/sqrt(4q-p^2) arctan((2x+p)/sqrt(4q-p^2)) $
 
-Bsp. $integral (x^2-x+2)/(x^3-x^2+x-1)$: Nullstelle $x=1$, Polynomdiv. $-> x^2+1$. Ansatz $(A+B x)/(x^2+1)+C/(x-1)$: $B=0, A=-1, C=1 => ln(x-1)-arctan(x)+C$.
+#B Zähler eines quadratischen Terms aufspalten: $B x+C = B/2 (2x+p) + (C - (B p)/2)$, erster Teil $-> log$, zweiter $-> arctan$.
+
+Bsp. $integral (x^2-x+2)/(x^3-x^2+x-1) dif x$: Nullstelle $x=1$, Polynomdiv. $=> Q=(x-1)(x^2+1)$. Ansatz $C/(x-1)+(A+B x)/(x^2+1)$: $B=0, A=-1, C=1 => ln|x-1|-arctan(x)+c$.
 
 #chapter[Sonstiges]
 
@@ -1060,7 +1075,7 @@ $ sqrt(1+x)=1+x/2-x^2/8+x^3/16-(5x^4)/128+(7x^5)/256-dots $
   $lim_(x->oo) x^a q^x=0\, med 0<=q<1$, $lim_(x->0)(sin x)/x=1$,
   $lim_(x->plus.minus oo)(1+1/x)^x=e$, $lim_(x->0)(cos x-1)/x=0$,
   $lim_(x->oo)(1+k/x)^(m x)=e^(k m)$, $lim_(x->0) x log x=0$,
-  $lim_(x->0) 1/cos x=1$, $lim_(x->0)(e^x-1)/x=1$,
+  $lim_(x->0) 1/(cos x)=1$, $lim_(x->0)(e^x-1)/x=1$,
   $lim_(x->0)(1-cos x)/x^2=1/2$, $lim_(x->oo) arctan x=pi/2$,
   $lim_(x->0) x/(arctan x)=1$, $lim_(x->0)(e^(a x)-1)/x=a$,
   $lim_(x->oo)(x/(x+k))^x=e^(-k)$, $lim_(x->1)(ln x)/(x-1)=1$,
@@ -1110,14 +1125,14 @@ $ sqrt(1+x)=1+x/2-x^2/8+x^3/16-(5x^4)/128+(7x^5)/256-dots $
   $log_a|x|$, $1/(x ln a)$,
   $sin x$, $cos x$,
   $cos x$, $-sin x$,
-  $tan x$, $1/cos^2 x=1+tan^2 x$,
-  $cot x$, $-1/sin^2 x$,
+  $tan x$, $1/(cos^2 x)=1+tan^2 x$,
+  $cot x$, $-1/(sin^2 x)$,
   $arcsin x$, $1/sqrt(1-x^2)$,
   $arccos x$, $-1/sqrt(1-x^2)$,
   $arctan x$, $1/(1+x^2)$,
   $sinh x$, $cosh x$,
   $cosh x$, $sinh x$,
-  $tanh x$, $1/cosh^2 x=1-tanh^2 x$,
+  $tanh x$, $1/(cosh^2 x)=1-tanh^2 x$,
   $"arcsinh" x$, $1/sqrt(1+x^2)$,
   $"arccosh" x$, $1/sqrt(x^2-1)$,
   $"arctanh" x$, $1/(1-x^2)$,
@@ -1135,8 +1150,8 @@ $ sqrt(1+x)=1+x/2-x^2/8+x^3/16-(5x^4)/128+(7x^5)/256-dots $
   $1/a sin(a x+b)$, $cos(a x+b)$,
   $-ln|cos x|$, $tan x$,
   $ln|sin x|$, $cot x$,
-  $ln|tan(x/2)|$, $1/sin x$,
-  $ln|tan(x/2+pi/4)|$, $1/cos x$,
+  $ln|tan(x/2)|$, $1/(sin x)$,
+  $ln|tan(x/2+pi/4)|$, $1/(cos x)$,
   $1/2(x-sin x cos x)$, $sin^2 x$,
   $1/2(x+sin x cos x)$, $cos^2 x$,
   $tan x-x$, $tan^2 x$,
@@ -1195,14 +1210,19 @@ Erst $y_h$ (homogen) finden, dann Ansatz für $y_p$ nach Störterm $s(x)$:
   $A sin(w u)+B cos(w u)$, $(C_1 sin(w u)+C_2 cos(w u))u^m$,
 )
 
-*Resonanz:* $m=$ Vielfachheit der zugehörigen Nullstelle des char. Polynoms ($0$ bei Polynom, $k$ bei $e^(k u)$, $i w$ bei $sin\/cos$); ohne Resonanz $m=0$. Koeffizienten via ableiten, einsetzen, Koeffizientenvergleich.
+*Resonanz – Exponent $m$ bestimmen:* Zu jedem Störterm gehört eine Testzahl $lambda$:
+- Polynom: $lambda=0$
+- $e^(k u)$: $lambda=k$
+- $sin\/cos(w u)$: $lambda=i w$
+
+$m=$ wie oft $lambda$ Nullstelle des char. Polynoms ist. Ist $lambda$ keine Nullstelle $=>$ keine Resonanz, $m=0$ (Faktor $u^m=1$ fällt weg).
+
+Dann Koeffizienten $C_i$ finden: $y_p$ ableiten, in DG einsetzen, Koeffizientenvergleich.
 
 #sub[Existenz & Eindeutigkeit (Picard)]
 #bx[
   #S Ist $f$ stetig & Lipschitz-stetig in der 2. Variablen ($exists L>0: |f(x,y_1)-f(x,y_2)|<=L|y_1-y_2|$), so hat das AWP $cases(u'=f(x,u), u(x_0)=y_0)$ eine eindeutige $C^1$-Lösung.
 ]
-
-*Lipschitz-stetig:* $exists L>=0 med forall x,y in D: |f(x)-f(y)|<=L|x-y|$. (Lipschitz $=>$ gleichmässig stetig.)
 
 #strat[Strategie – DGL 1. Ordnung]
 Form erkennen $->$ passende Methode:
