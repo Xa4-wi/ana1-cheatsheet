@@ -773,7 +773,7 @@ Für $f: D->RR$ der Reihe nach:
   + *Symmetrie:* $f(-x)=f(x)$ achsensymmetrisch; $f(-x)=-f(x)$ punktsymmetrisch.
   + *Achsenschnittpunkte:* $f(x)=0$ lösen; falls $0 in D$, $y$-Achse bei $(0,f(0))$.
   + *Grenzwerte:* $x->plus.minus oo$ und Randstellen von $D$.
-  + *Asymptoten:* $lim_(x->a)|f|=oo => $ vertikal $x=a$; $lim_(x->plus.minus oo)f=c => $ horizontal $y=c$.
+  + *Asymptoten:* $lim_(x->a)|f|=oo =>$ vertikal $x=a$; $lim_(x->plus.minus oo)f=c =>$ horizontal $y=c$.
   + *Kandidaten:* Randpunkte von $D$, Stellen ohne Ableitung, Lösungen von $f'(x)=0$.
   + *Monotonie & Extrema:* Vorzeichen von $f'$ zwischen den Kandidaten ($->$ Aussagen der Ableitung).
   + *Krümmung & Wendestellen:* $f''(x)=0$ lösen, Vorzeichen von $f''$ prüfen ($->$ Krümmungsverhalten).
@@ -978,18 +978,35 @@ $ln(1+x)=sum_(n=1)^oo ((-1)^(n-1))/n x^n$ ($-1<x<=1$). $log_(b)(a)=(ln a)/(ln b)
 $ sin(z)=sum_(n=0)^oo ((-1)^n z^(2n+1))/(2n+1)! = (e^(i z)-e^(-i z))/(2i) $
 $ cos(z)=sum_(n=0)^oo ((-1)^n z^(2n))/(2n)! = (e^(i z)+e^(-i z))/2 $
 $sin,cos: RR->RR$ stetig; beide Reihen absolut konv., $R=+oo$.
-+ $cos(-z)=cos(z)$, $sin(-z)=-sin(z)$
-+ $cos(pi-x)=-cos x$, $sin(pi-x)=sin x$
+
+*Symmetrie:*
++ $cos(-z)=cos z$, $quad sin(-z)=-sin z$
++ $cos(pi-x)=-cos x$, $quad sin(pi-x)=sin x$
+
+*Pythagoras:* $cos^2 z+sin^2 z=1$.
+
+*Additionstheoreme:*
 + $sin(z+w)=sin z cos w + cos z sin w$
 + $cos(z+w)=cos z cos w - sin z sin w$
-+ $cos^2 z+sin^2 z=1$
-+ $sin(2z)=2 sin z cos z$; $cos(2z)=cos^2 z-sin^2 z$
++ $sin(2z)=2 sin z cos z$
++ $cos(2z)=cos^2 z-sin^2 z$
 
-$tan z=(sin z)/(cos z)$ ($z in.not pi/2+pi ZZ$); $cot z=(cos z)/(sin z)$ ($z in.not pi ZZ$). \
-$sin(arctan x)=x/sqrt(x^2+1)$, $cos(arctan x)=1/sqrt(x^2+1)$. \
-$sin x=(tan x)/sqrt(1+tan^2 x)$, $cos x=1/sqrt(1+tan^2 x)$. \
-Nullstellen: $cos: pi/2+k pi$; $sin: k pi$. \
-Arc: $arcsin: [-1,1]->[-pi/2,pi/2]$; $arccos: [-1,1]->[0,pi]$; $arctan: RR->(-pi/2,pi/2)$.
+*Produkt $->$ Summe:*
+$ sin x cos y = 1/2[sin(x+y)+sin(x-y)] $
+$ cos x cos y = 1/2[cos(x-y)+cos(x+y)] $
+$ sin x sin y = 1/2[cos(x-y)-cos(x+y)] $
+
+*Tangens/Kotangens:*
+$ tan z=(sin z)/(cos z) space (z in.not pi/2+pi ZZ) $
+$ cot z=(cos z)/(sin z) space (z in.not pi ZZ) $
+$ sin(arctan x)=x/sqrt(x^2+1), quad cos(arctan x)=1/sqrt(x^2+1) $
+$ sin x=(tan x)/sqrt(1+tan^2 x), quad cos x=1/sqrt(1+tan^2 x) $
+
+*Nullstellen:* $cos: pi/2+k pi$, $sin: k pi$. \
+*Umkehrfunktionen:* \
+$arcsin: [-1,1]->[-pi/2,pi/2]$ \
+$arccos: [-1,1]->[0,pi]$ \
+$arctan: RR->(-pi/2,pi/2)$
 
 *Funktionswerte:*
 #block(breakable: false, width: 100%, text(size: 6.6pt, table(
@@ -1002,6 +1019,18 @@ Arc: $arcsin: [-1,1]->[-pi/2,pi/2]$; $arccos: [-1,1]->[0,pi]$; $arctan: RR->(-pi
   $sin$, $0$, $1/2$, $sqrt(2)/2$, $sqrt(3)/2$, $1$, $sqrt(3)/2$, $1/2$, $0$, $-1$,
   $cos$, $1$, $sqrt(3)/2$, $sqrt(2)/2$, $1/2$, $0$, $-1/2$, $-sqrt(3)/2$, $-1$, $0$,
   $tan$, $0$, $sqrt(3)/3$, $1$, $sqrt(3)$, $-$, $-sqrt(3)$, $-sqrt(3)/3$, $0$, $-$,
+)))
+
+*Reduktionsformeln.* Zurückführen auf Winkel im 1. Quadranten ($k in ZZ$):
+#block(breakable: false, width: 100%, text(size: 6.6pt, table(
+  columns: (auto, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+  inset: (x: 3pt, y: 3.6pt),
+  align: center + horizon,
+  stroke: innergrid,
+  $$, $-alpha$, $90°-alpha$, $90°+alpha$, $180°-alpha$, $180°+alpha$, $k dot 360°-alpha$, $k dot 360°+alpha$,
+  $sin$, $-sin alpha$, $cos alpha$, $cos alpha$, $sin alpha$, $-sin alpha$, $-sin alpha$, $sin alpha$,
+  $cos$, $cos alpha$, $sin alpha$, $-sin alpha$, $-cos alpha$, $-cos alpha$, $cos alpha$, $cos alpha$,
+  $tan$, $-tan alpha$, $cot alpha$, $-cot alpha$, $-tan alpha$, $tan alpha$, $-tan alpha$, $tan alpha$,
 )))
 
 #block(width: 100%, breakable: false)[
@@ -1027,6 +1056,9 @@ $forall x in (0,pi): sin x>0$; $e^(i pi/2)=i$.
 
 #sub[Potenz der Winkelfunktion]
 $ sin^2 x=1/2(1-cos 2x), quad cos^2 x=1/2(1+cos 2x) $
+$ sin^3 x=sin x(1-cos^2 x), quad cos^3 x=cos x(1-sin^2 x) $
+$ sin^4 x=3/8-1/2 cos 2x+1/8 cos 4x $
+$ cos^4 x=3/8+1/2 cos 2x+1/8 cos 4x $
 
 #sub[Reduktionsformel]
 $ integral cos^n x dif x = (n-1)/n integral cos^(n-2)x dif x + (cos^(n-1)x sin x)/n $
@@ -1184,7 +1216,8 @@ $a_n u^((n))+dots+a_1 u'+a_0 u=0$. Euler-Ansatz $u(x)=e^(lambda x)$.
 Nullstellen mit Vielfachheit $m$ liefern $m$ Fundamentallösungen:
 + reell einfach $lambda$: $e^(lambda x)$
 + reell $m$-fach: $e^(lambda x), x e^(lambda x),dots,x^(m-1)e^(lambda x)$
-+ Paar $alpha plus.minus i beta$: $e^(alpha x)cos(beta x), e^(alpha x)sin(beta x)$
++ Paar $alpha plus.minus i beta$ einfach: $e^(alpha x)cos(beta x), e^(alpha x)sin(beta x)$
++ Paar $alpha plus.minus i beta$ $m$-fach ($k=0,dots,m-1$): $x^k e^(alpha x)cos(beta x), x^k e^(alpha x)sin(beta x)$ (also $2m$ Fundamentallösungen)
 
 *Allgemeine Lösung:* Summe aller Fundamentallösungen, jeweils mal Konstante: $y(x)=C_1 y_(1)(x)+dots+C_n y_(n)(x)$.
 
