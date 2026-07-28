@@ -357,12 +357,12 @@ $B quad a_n=sum_(i=1)^n 1/i$ konvergiert nicht, aber $|a_(n+1)-a_n| -> 0$.
 - Definition der Konvergenz / Limes anwenden.
 - Rekursive Folgen: Weierstrass, Schranke abschätzen, per Induktion beweisen.
 - Cauchy-Kriterium.
-- Konvergenten Majoranten suchen.
+- *Majorante:* $|a_n-a|<=b_n$ und $b_n->0$ $=>$ $a_n->a$.
 
 Bsp. $d_1=3, d_(n+1)=sqrt(3d_n-2)$. Induktion: monoton fallend. Grenzwert-Kandidat: $d=lim d_n=lim d_(n+1)=sqrt(3d-2) => d^2=3d-2 => d=2$. Zeige untere Schranke $d=2$ per Induktion.
 
 #strat[Strategie – Divergenz von Folgen]
-- Divergenten Minoranten suchen.
+- *Minorante:* $0<=b_n<=a_n$ und $b_n->oo$ $=>$ $a_n->oo$.
 - Alternierend: zeige $lim a_(p_(1)(n)) eq.not lim a_(p_(2)(n))$.
 
 #strat[Strategie – Spezielle Limes-Tricks]
@@ -398,10 +398,9 @@ Falls $a_n>=0$ und $sum a_n$ divergent: $sum a_n=oo$.
 
 #sub[Konvergenzkriterien]
 #bx[
-  #K *(Vergleichssatz)* $0<=a_k<=b_k med forall k>=K$:
-  + $sum b_k$ konv. $==> sum a_k$ konv.
-  + $sum a_k$ div. $==> sum b_k$ div.
-  (Majoranten- / Minorantenkriterium)
+  #K *(Majoranten-/Minorantenkriterium)* $0<=a_k<=b_k$ ab $k>=K$:
+  + *Majorante $b_k$:* $sum b_k$ konv. $=>$ $sum a_k$ konv. (gross $=>$ klein).
+  + *Minorante $a_k$:* $sum a_k$ div. $=>$ $sum b_k$ div. (klein $=>$ gross).
 ]
 
 #bx[
@@ -887,7 +886,7 @@ $ n!=sqrt(2 pi n) n^n/e^n dot exp(1/(12n)+R_(3)(n)), quad |R_(3)(n)|<=sqrt(3)/21
 #sub[Uneigentliche Integrale]
 $f: [a,oo)->RR$ beschränkt & integrierbar auf $[a,b]$. Falls $lim_(b->oo) integral_a^b f$ existiert, heisst $f$ auf $[a,oo)$ integrierbar mit $integral_a^oo f$.
 
-Minoranten/Majoranten-Kriterium gilt.
+Analog für $0<=f<=g$ ab $A$: $integral_A^oo g$ konv. $=>$ $integral_A^oo f$ konv.; $integral_A^oo f$ div. $=>$ $integral_A^oo g$ div.
 
 $f: (a,b]->RR$ integrierbar, falls $lim_(epsilon->0^+) integral_(a+epsilon)^b f$ existiert.
 
@@ -1130,8 +1129,8 @@ $ sqrt(1+x)=1+x/2-x^2/8+x^3/16-(5x^4)/128+(7x^5)/256-dots $
 )
 
 *Geometrisch:* $sum_(k=0)^n q^k=(1-q^(n+1))/(1-q)$; für $|q|<1$: $sum_(k=0)^oo q^k=1/(1-q)$. \
-*Harmonisch:* $sum 1/n$ divergent, alternierend konv. \
-*Zeta:* $zeta(s)=sum 1/n^s$ konv. für $s>1$. \
+*$p$-Reihe / Zeta:* $zeta(p)=sum_(n=1)^oo 1/n^p$ konv. für $p>1$, div. für $p<=1$. \
+*Alternierend harmonisch:* $sum_(n=1)^oo (-1)^(n+1)/n$ konv. \
 *Teleskop:* $sum log(n/(n+1))=-oo$.
 
 #chapter[Ableitungen & Stammfunktionen]
