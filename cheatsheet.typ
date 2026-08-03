@@ -105,7 +105,7 @@
 
 #block(width: 100%, below: 0.7em, align(
   center,
-  text(size: 17pt)[Analysis I] + linebreak() + text(size: 8pt, style: "italic")[T. Ruser],
+  text(size: 17pt)[Analysis I] + linebreak() + text(size: 8pt, style: "italic")[X.Winkelmann],
 ))
 
 #chapter[Reelle und komplexe Zahlen]
@@ -808,10 +808,15 @@ $L(f)=sup_P L(f,P)$, $U(f)=inf_P U(f,P)$.
 + Unterschied auf endlicher Menge ändert Integrierbarkeit nicht
 
 #sub[Rechnen mit Integralen]
-$ integral_a^b (lambda_1 f + lambda_2 g)dif x = lambda_1 integral_a^b f dif x + lambda_2 integral_a^b g dif x $
-$
-  integral_(a+c)^(b+c) f(x)dif x = integral_a^b f(t+c)dif t, quad integral_a^b f(c t)dif t = 1/c integral_(a c)^(b c) f(x)dif x
-$
++ *Konstante / Linearität:* $integral c dif x = c x + C$ und
+  $integral_a^b (lambda f + mu g)dif x = lambda integral_a^b f dif x + mu integral_a^b g dif x$.
++ *Grenzen:* $integral_a^a f dif x = 0$ und $integral_a^b f dif x = -integral_b^a f dif x$.
++ *Intervall teilen:* $integral_a^c f dif x = integral_a^b f dif x + integral_b^c f dif x$.
++ *Hauptsatz:* $F'=f => integral f dif x = F(x)+C$ und $integral_a^b f dif x = F(b)-F(a)$.
++ *Substitution (rückwärts Kettenregel):* $F'=f => integral f(g(x)) g'(x)dif x = F(g(x))+C$.
++ *Partielle Integration (rückwärts Produktregel):* $integral f g' dif x = f g - integral f' g dif x$.
++ *Verschieben / Skalieren:* $integral_(a+c)^(b+c) f(x)dif x = integral_a^b f(t+c)dif t$ und
+  $integral_a^b f(c t)dif t = 1/c integral_(a c)^(b c) f(x)dif x$ ($c eq.not 0$).
 
 #sub[Ungleichungen und Mittelwertsatz]
 + $f<=g => integral_a^b f <= integral_a^b g$
@@ -837,10 +842,12 @@ Wahl von $f$ (absteigende Priorität):
 - $x^n, arcsin, arccos, arctan$
 - "egal": $e^x, sin, cos, sinh, cosh$
 
-#sub[Substitution]
-#bx[
-  $phi: [a,b]->RR$ stetig diff.bar, $phi([a,b]) subset.eq I$, $f: I->RR$ stetig:
-  $ integral_a^b f(phi(t)) phi'(t) dif t = integral_(phi(a))^(phi(b)) f(x)dif x $
+#block(breakable: false)[
+  #sub[Substitution]
+  #bx[
+    $phi: [a,b]->RR$ stetig diff.bar, $phi([a,b]) subset.eq I$, $f: I->RR$ stetig:
+    $ integral_a^b f(phi(t)) phi'(t) dif t = integral_(phi(a))^(phi(b)) f(x)dif x $
+  ]
 ]
 Bsp. $integral (x)/(sqrt(9-x^2))dif x$, $t=sqrt(9-x^2) => dif x = -t dif t\/sqrt(9-t^2) => integral -dif t = -t$, rücksub. $-sqrt(9-x^2)$.
 
@@ -1105,7 +1112,7 @@ $ sqrt(1+x)=1+x/2-x^2/8+x^3/16-(5x^4)/128+(7x^5)/256-dots $
   $lim_(x->oo)(1+x)^(1/x)=1$, $lim_(x->oo)(1-1/x)^x=1/e$,
   $lim_(x->oo) x^a q^x=0\, med 0<=q<1$, $lim_(x->0)(sin x)/x=1$,
   $lim_(x->plus.minus oo)(1+1/x)^x=e$, $lim_(x->0)(cos x-1)/x=0$,
-  $lim_(x->oo)(1+k/x)^(m x)=e^(k m)$, $lim_(x->0) x log x=0$,
+  $lim_(x->oo)(1+k/x)^(m x)=e^(k m)$, $lim_(x->0^+) x ln x=0$,
   $lim_(x->0) 1/(cos x)=1$, $lim_(x->0)(e^x-1)/x=1$,
   $lim_(x->0)(1-cos x)/x^2=1/2$, $lim_(x->oo) arctan x=pi/2$,
   $lim_(x->0) x/(arctan x)=1$, $lim_(x->0)(e^(a x)-1)/x=a$,
@@ -1113,7 +1120,7 @@ $ sqrt(1+x)=1+x/2-x^2/8+x^3/16-(5x^4)/128+(7x^5)/256-dots $
   $lim_(x->0)(a^x-1)/x=ln a$, $lim_(x->oo)(log x)/x^a=0$,
   $lim_(x->0)(ln(x+1))/x=1$, $lim_(x->oo)(2^x)/x^2=oo$,
   $lim_(x->oo)(ln x)/x=0$, $lim_(x->pi/2^+) tan x=-oo$,
-  $lim_(x->oo) root(x, x)=1$, $lim_(x->0^+) x ln x=0$,
+  $lim_(x->oo) root(x, x)=1$, text(size: 6.2pt)[$lim_(x->1)(x^m-1)/(x^n-1)=m/n quad (m>=0<n)$],
   $lim_(x->pi/2^-) tan x=+oo$, $lim_(x->oo)(sin x)/x=0$,
 )
 
@@ -1329,10 +1336,17 @@ $ y_(h)(x) = A e^(-F(x)). $
   $ y(x) = e^(-F(x)) lr((C_0 + integral g(x)e^(F(x)) dif x)), quad F'(x) = f(x). $
 ]
 
-#sub[Wichtige Funktionen im Überblick]
-#figure(image("functions.png", width: 100%))
-
 #chapter[Task Examples]
+
+#block(width: 100%, breakable: false)[
+  #sub[Monotone Konvergenz]
+  *Aufgabe:* Zeige $lim_(n->oo) a^n/(n!) = 0$ für $a>0$.
+
+  Setze $b_n=a^n/n!$. Für $n+1>a$ gilt
+  $ b_(n+1)/b_n=a/(n+1)<1. $
+  Also ist $(b_n)$ schliesslich fallend und durch $0$ nach unten beschränkt, somit $b_n->L$. Da $(b_n)$ beschränkt ist,
+  $ L=lim b_(n+1)=lim a/(n+1) b_n=0. $
+]
 
 #sub[Komplexe Nullstelle]
 $P(x)=x^3-x^2+x+1+a$ und $P(-i)=0$:
@@ -1349,16 +1363,6 @@ $ P(x)=x^3-x^2+x-1=(x-1)(x^2+1)=(x-1)(x-i)(x+i). $
 ]
 
 #block(width: 100%, breakable: false)[
-  #sub[Monotone Konvergenz]
-  *Aufgabe:* Zeige $lim_(n->oo) a^n/(n!) = 0$ für $a>0$.
-
-  Setze $b_n=a^n/n!$. Für $n+1>a$ gilt
-  $ b_(n+1)/b_n=a/(n+1)<1. $
-  Also ist $(b_n)$ schliesslich fallend und durch $0$ nach unten beschränkt, somit $b_n->L$. Da $(b_n)$ beschränkt ist,
-  $ L=lim b_(n+1)=lim a/(n+1) b_n=0. $
-]
-
-#block(width: 100%, breakable: false)[
   #sub[Cauchy-Folge]
   *Aufgabe:* Sei $(s_n)_(n>=0)$ eine Cauchy-Folge, $k>0$ und
   $ |t_n-t_m|<=k|s_n-s_m| quad forall n,m>=1. $
@@ -1371,10 +1375,36 @@ $ P(x)=x^3-x^2+x-1=(x-1)(x^2+1)=(x-1)(x-i)(x+i). $
   Also ist $(t_n)$ eine Cauchy-Folge.
 ]
 
-#chapter[Algebraic Tricks]
+#block(width: 100%, breakable: false)[
+  #sub[Gerade Funktion]
+  *Aufgabe:* Entscheide mit Beweis, ob $f(x)=x sin x$ gerade, ungerade oder keines von beiden ist.
 
-#sub[Polynome und Brüche]
-- *Ausklammern:* $a x+a y=a(x+y)$; nach gemeinsamen Faktoren oder Potenzen suchen.
+  Für jedes $x in RR$ gilt wegen $sin(-x)=-sin x$:
+  $ f(-x)=(-x)sin(-x)=(-x)(-sin x)=x sin x=f(x). $
+  Also ist $f$ gerade.
+]
+
+#block(width: 100%, breakable: false)[
+  #sub[Punktweise und gleichmässige Konvergenz]
+  *Aufgabe:* Untersuche $f_k(x)=x/(1+k x^2)$ auf $RR$ auf punktweise und gleichmässige Konvergenz.
+
+  Für festes $x$ gilt $f_k(0)=0$ und für $x eq.not 0$:
+  $ |f_k(x)| <= 1/(k|x|) -> 0. $
+  Also konvergiert $f_k$ punktweise gegen $f=0$.
+
+  Wegen $1+k x^2>=2sqrt(k)|x|$ gilt für alle $x in RR$:
+  $ |f_k(x)-0| <= 1/(2sqrt(k)). $
+  Gleichheit gilt bei $|x|=1/sqrt(k)$, also
+  $ norm(f_k-f)_infinity = sup_(x in RR)|f_k(x)|=1/(2sqrt(k)) -> 0. $
+  Somit konvergiert $f_k$ sogar *gleichmässig* gegen $0$.
+]
+
+#block(width: 100%, breakable: false)[
+  #chapter[Algebraic Tricks]
+
+  #sub[Polynome und Brüche]
+  - *Ausklammern:* $a x+a y=a(x+y)$; nach gemeinsamen Faktoren oder Potenzen suchen.
+]
 - *Binome:* $(a plus.minus b)^2=a^2 plus.minus 2a b+b^2$, $quad a^2-b^2=(a-b)(a+b)$.
 - *Kubiken:* $a^3-b^3=(a-b)(a^2+a b+b^2)$, $quad a^3+b^3=(a+b)(a^2-a b+b^2)$.
 - *Quadratisch ergänzen:* $x^2+b x+c=(x+b/2)^2+c-b^2/4$.
@@ -1409,15 +1439,16 @@ $ P(x)=x^3-x^2+x-1=(x-1)(x^2+1)=(x-1)(x-i)(x+i). $
 - $1-cos x=2sin^2(x/2)$, $quad 1+cos x=2cos^2(x/2)$.
 - $sin x=2sin(x/2)cos(x/2)$, $quad sin(2x)=2sin x cos x$.
 - $cos(2x)=cos^2 x-sin^2 x=1-2sin^2 x=2cos^2 x-1$.
+#block(width: 100%, breakable: false)[
+  - *Periodizität sichtbar machen:* gemeinsamen $pi$-Faktor im Argument ausklammern und ganze Perioden entfernen:
+    Es gilt $sin(t+2k pi)=sin t$, $cos(t+2k pi)=cos t$ und $tan(t+k pi)=tan t$ ($k in ZZ$).
+    Bsp.: $sin(2pi x-2pi)=sin(2pi(x-1))=sin(2pi x)$; daher $(2pi sin(2pi x))/(sin(2pi x-2pi))=2pi$, falls der Nenner nicht $0$ ist.
+]
 - *Produkt $->$ Summe:*
   $2sin a cos b=sin(a+b)+sin(a-b)$,
   $2cos a cos b=cos(a+b)+cos(a-b)$.
 - *Halbwinkelsubstitution* $t=tan(x/2)$:
   $sin x=(2t)/(1+t^2)$, $cos x=(1-t^2)/(1+t^2)$.
 
-#sub[Betrag, Gleichungen und Kontrolle]
-- $|u|=cases(u & u>=0, -u & u<0)$ und $sqrt(u^2)=|u|$.
-- Für $c>=0$: $|u|=c <=> u=plus.minus c$; $|u|<c <=> -c<u<c$.
-- Nenner beseitigen: mit dem Hauptnenner multiplizieren, aber ausgeschlossene Nullstellen notieren.
-- Wurzelgleichung: Wurzel isolieren, quadrieren, lösen und *jede Lösung einsetzen* (Scheinlösungen möglich).
-- Definitionsbereich zuerst: Nenner $eq.not 0$, Log-Argument $>0$, gerade Wurzel mit Radikand $>=0$.
+#sub[Wichtige Funktionen im Überblick]
+#figure(image("functions.png", width: 100%))
