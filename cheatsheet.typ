@@ -1159,6 +1159,7 @@ $ sqrt(1+x)=1+x/2-x^2/8+x^3/16-(5x^4)/128+(7x^5)/256-dots $
   $root(n, x)$, $1/n x^(1/n-1)$,
   $2/3 x^(3/2)$, $sqrt(x)$,
   $e^x$, $e^x$,
+  $a^(c x)/(c ln a)$, $a^(c x) quad (a>0, a eq.not 1, c eq.not 0)$,
   $ln|x|$, $1/x$,
   $log_a|x|$, $1/(x ln a)$,
   $sin x$, $cos x$,
